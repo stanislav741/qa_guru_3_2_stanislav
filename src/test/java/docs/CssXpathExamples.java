@@ -1,12 +1,5 @@
 package docs;
 
-import static com.codeborne.selenide.Selenide.open;
-
-public class CssXpathExamples {
-}
-
-package docs;
-
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
