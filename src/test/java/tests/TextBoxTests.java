@@ -29,6 +29,36 @@ public class TextBoxTests {
     }
 
     @Test
+    void fillFormWithVariablesTest() {
+        String userName = "Alex",
+                email = "alex@test.com",
+                currentAddress = "Ulitsa Shorsa",
+                permanentAddress = "Jekaterinburg";
+
+        open("https://demoqa.com/text-box");
+
+        $("#userName").val(userName);
+        $("#userEmail").val(email);
+        $("#currentAddress").val(currentAddress);
+        $("#permanentAddress").val(permanentAddress);
+        $("#submit").click();
+
+        $("#output").shouldHave(text(
+                "Name:" + userName + "\n" +
+                "Email:alex@test.com\n" +
+                "Current Address :Ulitsa Shorsa\n" +
+                "Permananet Address :Jekaterinburg"));
+
+        $("#output").shouldHave(text(String.format(
+                "Name:%s\n" +
+                "Email:%s\n" +
+                "Current Address :Ulitsa Shorsa\n" +
+                "Permananet Address :Jekaterinburg", userName, email)));
+
+        $("#name").shouldHave(text(userName));
+    }
+
+    @Test
     void wrongEmailTest() {
             open("https://demoqa.com/text-box");
 
